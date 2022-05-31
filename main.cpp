@@ -1,10 +1,32 @@
 #include <iostream>
-#include "Adder/adder.h"
+#include "adder.h"
+#include "GLFW/glfw3.h"
 
 int main()
 {
-    std::cout << "Hello, World!\n";
+    GLFWwindow* window;
 
-    std::cout << add(72.1f, 74.2f) << '\n';
+    if(!glfwInit())
+        exit(EXIT_FAILURE);
+
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+ 
+    window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+
+    while(!glfwWindowShouldClose(window))
+    {
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+    glfwDestroyWindow(window);
+    glfwTerminate();
+
     return 0;
 }
