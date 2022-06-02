@@ -47,6 +47,7 @@ build/
 
 [Bb][Uu][Ii][Ll][Dd]
 
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
