@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23.2)
 
-project(learning)
+project(glfw_learning)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
@@ -29,23 +29,20 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/external/glm/CMakeLists.txt")
     message(FATAL_ERROR "The glfw submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please Update Submodules")
 endif()
 
-add_subdirectory(Adder)
 add_subdirectory(external/glad)
 add_subdirectory(external/glfw)
 add_subdirectory(external/glm)
 
 target_include_directories(${PROJECT_NAME} 
-    PUBLIC Adder 
     PUBLIC external/glfw/include
     PUBLIC external/glm
     PUBLIC externalglad/include
 )
 
 target_link_directories(${PROJECT_NAME} 
-    PRIVATE Adder
     PRIVATE external/glfw/src
     PRIVATE external/glad/src
 )
 
-target_link_libraries(${PROJECT_NAME} adder glad glfw)
+target_link_libraries(${PROJECT_NAME} glad glfw)
 
