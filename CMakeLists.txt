@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23.2)
 
 project(learning)
 
-add_executable(${PROJECT_NAME} main.cpp glad/src/glad.c)
+add_executable(${PROJECT_NAME} main.cpp)
 
 #Download all submodules
 find_package(Git QUIET)
@@ -30,7 +30,7 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/external/glm/CMakeLists.txt")
 endif()
 
 add_subdirectory(Adder)
-add_subdirectory(glad)
+add_subdirectory(external/glad)
 add_subdirectory(external/glfw)
 add_subdirectory(external/glm)
 
@@ -38,13 +38,13 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC Adder 
     PUBLIC external/glfw/include
     PUBLIC external/glm
-    PUBLIC glad/include
+    PUBLIC externalglad/include
 )
 
 target_link_directories(${PROJECT_NAME} 
     PRIVATE Adder
     PRIVATE external/glfw/src
-    PRIVATE glad/src
+    PRIVATE external/glad/src
 )
 
 target_link_libraries(${PROJECT_NAME} adder glad glfw)
